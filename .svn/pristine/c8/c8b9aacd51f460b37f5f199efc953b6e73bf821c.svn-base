@@ -1,0 +1,17 @@
+frmLogin = 25, 48, 1006, 384, C, 25, 21, 1034, 389, C
+frmMaster = 110, 145, 1091, 481, , 44, 58, 1025, 394, C
+frmGPass = 0, 0, 0, 0, C, 66, 87, 1047, 423, C
+frmBuku = 66, 87, 1047, 423, C, 2, -5, 983, 483, C
+frmStaff = 22, 29, 1003, 365, , 37, 16, 1018, 352, C
+frmAnggota = 6, 77, 987, 413, , 1, 15, 982, 496, C
+frmPeminjaman = 66, 87, 1047, 423, C, 95, 26, 1076, 437, C
+frmHistory = 0, 0, 0, 0, C, 44, 58, 1025, 394, C
+frmAbout = 0, 0, 0, 0, C, 66, 87, 1047, 423, C
+mod_koneksi = 88, 116, 1069, 452, C
+frmPengembalian = 110, 145, 1091, 481, Z, 26, -5, 1007, 331, C
+mod_global_var = 22, 29, 1003, 365, C
+frmSetting = 110, 145, 1091, 481, C, 44, 58, 1025, 394, C
+frmLaporanBuku = 0, 0, 0, 0, C, 44, 58, 1025, 394, C
+frmLaporanAnggota = 0, 0, 0, 0, C, 88, 116, 1069, 452, C
+frmLaporanBukuFav = 0, 0, 0, 0, C, 110, 145, 1091, 481, C
+frmLaporanPeminjaman = 0, 0, 0, 0, C, 0, 0, 981, 336, C

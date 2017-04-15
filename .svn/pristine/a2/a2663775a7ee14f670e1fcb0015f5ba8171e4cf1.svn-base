@@ -1,0 +1,205 @@
+VERSION 5.00
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "Mscomctl.ocx"
+Begin VB.MDIForm frmMaster 
+   BackColor       =   &H8000000C&
+   Caption         =   "-- Aplikasi Perpustakaan v1.0 --"
+   ClientHeight    =   3090
+   ClientLeft      =   165
+   ClientTop       =   855
+   ClientWidth     =   4680
+   LinkTopic       =   "MDIForm1"
+   StartUpPosition =   3  'Windows Default
+   WindowState     =   2  'Maximized
+   Begin MSComctlLib.StatusBar sbar 
+      Align           =   2  'Align Bottom
+      Height          =   375
+      Left            =   0
+      TabIndex        =   0
+      Top             =   2715
+      Width           =   4680
+      _ExtentX        =   8255
+      _ExtentY        =   661
+      _Version        =   393216
+      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
+         NumPanels       =   2
+         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            Text            =   "user"
+            TextSave        =   "user"
+         EndProperty
+         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            Text            =   "tanggal"
+            TextSave        =   "tanggal"
+         EndProperty
+      EndProperty
+   End
+   Begin VB.Menu mn_file 
+      Caption         =   "&File"
+      Begin VB.Menu mn_login 
+         Caption         =   "Login"
+      End
+      Begin VB.Menu mn_pisah_1 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mn_gpass 
+         Caption         =   "Ganti Password"
+      End
+      Begin VB.Menu mn_logout 
+         Caption         =   "Logout"
+      End
+      Begin VB.Menu mn_keluar 
+         Caption         =   "Keluar"
+      End
+   End
+   Begin VB.Menu mn_data 
+      Caption         =   "Data"
+      Begin VB.Menu mn_data_buku 
+         Caption         =   "Data Buku"
+      End
+      Begin VB.Menu mn_data_staff 
+         Caption         =   "Data Staff"
+      End
+      Begin VB.Menu mn_data_anggota 
+         Caption         =   "Data Anggota"
+      End
+   End
+   Begin VB.Menu mn_transaksi 
+      Caption         =   "Transaksi"
+      Begin VB.Menu mn_peminjaman 
+         Caption         =   "Form Peminjaman"
+      End
+      Begin VB.Menu mn_pengembalian 
+         Caption         =   "Form Pengembalian"
+      End
+   End
+   Begin VB.Menu mn_laporan 
+      Caption         =   "Laporan"
+      Begin VB.Menu mn_lap_pinjam 
+         Caption         =   "Laporan Peminjaman"
+      End
+      Begin VB.Menu mn_lap_buku_fav 
+         Caption         =   "Laporan Buku Favorit"
+      End
+      Begin VB.Menu mn_pisah_2 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mn_lap_data_anggota 
+         Caption         =   "Laporan Data Anggota"
+      End
+      Begin VB.Menu mn_lap_data_buku 
+         Caption         =   "Laporan Data Buku"
+      End
+   End
+   Begin VB.Menu mn_setting 
+      Caption         =   "Setting"
+      Begin VB.Menu mn_set_apl 
+         Caption         =   "Setting Aplikasi"
+      End
+      Begin VB.Menu mn_buka_akun 
+         Caption         =   "Buka Akun"
+      End
+   End
+   Begin VB.Menu mn_tentang 
+      Caption         =   "Tentang"
+   End
+End
+Attribute VB_Name = "frmMaster"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+'Form Master - Aplikasi Perpustakaan
+'copyright(c)2016 Yudha Tri Putra
+Private Sub awal()
+mn_data_anggota.Enabled = False
+mn_data_buku.Enabled = False
+mn_data_staff.Enabled = False
+mn_gpass.Enabled = False
+mn_peminjaman.Enabled = False
+mn_pengembalian.Enabled = False
+mn_set_apl.Enabled = False
+mn_buka_akun.Enabled = False
+End Sub
+Private Sub MDIForm_Load()
+frmLogin.Show
+Call awal
+sbar.Panels(1).Text = nama_staff
+sbar.Panels(2).Text = Time()
+End Sub
+
+Private Sub MDIForm_Unload(Cancel As Integer)
+Dim tanya
+tanya = MsgBox("Anda yakin akan keluar dari Aplikasi ?", vbInformation + vbYesNo, "Konfirmasi")
+If tanya = vbYes Then
+    Unload Me
+Else
+    Cancel = 1
+    Me.Show
+        If nama_staff = "" Then
+            frmLogin.Show
+        End If
+End If
+End Sub
+
+Private Sub mn_data_anggota_Click()
+frmAnggota.Show
+End Sub
+
+Private Sub mn_data_buku_Click()
+frmBuku.Show
+End Sub
+
+Private Sub mn_data_staff_Click()
+frmStaff.Show
+End Sub
+
+Private Sub mn_gpass_Click()
+frmGPass.Show
+End Sub
+
+Private Sub mn_keluar_Click()
+Unload Me
+End Sub
+
+Private Sub mn_lap_data_anggota_Click()
+frmLaporanAnggota.Show
+End Sub
+
+Private Sub mn_lap_data_buku_Click()
+frmLaporanBuku.Show
+End Sub
+
+Private Sub mn_lap_pinjam_Click()
+frmLaporanPeminjaman.Show
+End Sub
+
+Private Sub mn_login_Click()
+frmLogin.Show
+End Sub
+
+Private Sub mn_logout_Click()
+Unload frmBuku
+Unload frmAnggota
+Unload frmStaff
+Unload frmPeminjaman
+Unload frmPengembalian
+Unload frmHistory
+Unload frmSetting
+Unload frmAbout
+frmLogin.Show
+End Sub
+
+Private Sub mn_peminjaman_Click()
+frmPeminjaman.Show
+End Sub
+
+Private Sub mn_pengembalian_Click()
+frmPengembalian.Show
+End Sub
+
+Private Sub mn_set_apl_Click()
+frmSetting.Show
+End Sub
+
+Private Sub mn_tentang_Click()
+frmAbout.Show
+End Sub

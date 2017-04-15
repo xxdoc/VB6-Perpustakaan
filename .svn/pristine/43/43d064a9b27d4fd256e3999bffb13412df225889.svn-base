@@ -1,0 +1,10 @@
+Attribute VB_Name = "mod_koneksi"
+Public koneksi As New ADODB.Connection
+Public dt_user As ADODB.Recordset
+
+Public Sub koneksi_db()
+Set koneksi = New ADODB.Connection
+Set dt_user = New ADODB.Recordset
+koneksi.ConnectionString = "driver=mysql odbc 3.51 driver;server=localhost;uid=root;db=db_perpus;"
+koneksi.Open
+End Sub

@@ -1,0 +1,110 @@
+VERSION 5.00
+Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
+Begin VB.Form frmLaporanAnggota 
+   BorderStyle     =   3  'Fixed Dialog
+   Caption         =   "-- Form Laporan Anggota --"
+   ClientHeight    =   6180
+   ClientLeft      =   45
+   ClientTop       =   435
+   ClientWidth     =   15285
+   LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MDIChild        =   -1  'True
+   MinButton       =   0   'False
+   ScaleHeight     =   6180
+   ScaleWidth      =   15285
+   ShowInTaskbar   =   0   'False
+   Begin VB.CommandButton cmdKeluar 
+      Caption         =   "Keluar"
+      Height          =   495
+      Left            =   13920
+      TabIndex        =   5
+      Top             =   5520
+      Width           =   1215
+   End
+   Begin VB.CommandButton cmdCetak 
+      Caption         =   "&Cetak"
+      Height          =   495
+      Left            =   12600
+      TabIndex        =   4
+      Top             =   5520
+      Width           =   1215
+   End
+   Begin VB.TextBox txtCari 
+      Height          =   375
+      Left            =   1560
+      MaxLength       =   25
+      TabIndex        =   3
+      Top             =   5400
+      Width           =   5175
+   End
+   Begin VB.OptionButton optPilihan 
+      Caption         =   "Aktif"
+      Height          =   375
+      Index           =   0
+      Left            =   6960
+      TabIndex        =   2
+      Top             =   5400
+      Width           =   1095
+   End
+   Begin VB.OptionButton optPilihan 
+      Caption         =   "Tidak Aktif"
+      Height          =   375
+      Index           =   1
+      Left            =   8160
+      TabIndex        =   1
+      Top             =   5400
+      Width           =   1095
+   End
+   Begin VB.OptionButton optPilihan 
+      Caption         =   "Sering Meminjam"
+      Height          =   375
+      Index           =   2
+      Left            =   9600
+      TabIndex        =   0
+      Top             =   5400
+      Width           =   2055
+   End
+   Begin MSHierarchicalFlexGridLib.MSHFlexGrid grid_anggota 
+      Height          =   5175
+      Left            =   120
+      TabIndex        =   6
+      Top             =   120
+      Width           =   15015
+      _ExtentX        =   26485
+      _ExtentY        =   9128
+      _Version        =   393216
+      _NumberOfBands  =   1
+      _Band(0).Cols   =   2
+   End
+   Begin VB.Label Label1 
+      AutoSize        =   -1  'True
+      Caption         =   "Nama Anggota"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Left            =   120
+      TabIndex        =   7
+      Top             =   5400
+      Width           =   1260
+   End
+End
+Attribute VB_Name = "frmLaporanAnggota"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Private Sub Form_Load()
+Call koneksi_db
+dt_anggota.Open "select * from T_ANGGOTA", koneksi
+grid_anggota.Clear
+Set grid_anggota.DataSource = dt_anggota
+dt_anggota.Close
+End Sub

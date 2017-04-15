@@ -1,0 +1,161 @@
+VERSION 5.00
+Begin VB.Form frmGPass 
+   Caption         =   "-- Form Ganti Password --"
+   ClientHeight    =   3270
+   ClientLeft      =   60
+   ClientTop       =   450
+   ClientWidth     =   7050
+   LinkTopic       =   "Form1"
+   MDIChild        =   -1  'True
+   ScaleHeight     =   3270
+   ScaleWidth      =   7050
+   Begin VB.Frame Frame1 
+      Height          =   3015
+      Left            =   2640
+      TabIndex        =   0
+      Top             =   120
+      Width           =   4335
+      Begin VB.TextBox txtPassVerify 
+         Height          =   375
+         IMEMode         =   3  'DISABLE
+         Left            =   1320
+         MaxLength       =   15
+         PasswordChar    =   "*"
+         TabIndex        =   8
+         Top             =   1920
+         Width           =   2775
+      End
+      Begin VB.TextBox txtPassLama 
+         Height          =   375
+         IMEMode         =   3  'DISABLE
+         Left            =   1320
+         MaxLength       =   15
+         PasswordChar    =   "*"
+         TabIndex        =   4
+         Top             =   600
+         Width           =   2775
+      End
+      Begin VB.TextBox txtPassBaru 
+         Height          =   375
+         IMEMode         =   3  'DISABLE
+         Left            =   1320
+         MaxLength       =   15
+         PasswordChar    =   "*"
+         TabIndex        =   3
+         Top             =   1080
+         Width           =   2775
+      End
+      Begin VB.CommandButton cmdGanti 
+         Caption         =   "&Ganti Pass"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   495
+         Left            =   2880
+         TabIndex        =   2
+         Top             =   2400
+         Width           =   1215
+      End
+      Begin VB.CommandButton cmdBatal 
+         Caption         =   "&Batal"
+         Height          =   495
+         Left            =   1320
+         TabIndex        =   1
+         Top             =   2400
+         Width           =   1215
+      End
+      Begin VB.Label Label5 
+         AutoSize        =   -1  'True
+         Caption         =   "Verifikasi Password anda"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   195
+         Left            =   120
+         TabIndex        =   10
+         Top             =   1560
+         Width           =   2145
+      End
+      Begin VB.Label Label4 
+         AutoSize        =   -1  'True
+         Caption         =   "Password Baru"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   9
+         Top             =   1920
+         Width           =   1065
+      End
+      Begin VB.Label Label1 
+         AutoSize        =   -1  'True
+         Caption         =   "Password Lama"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   7
+         Top             =   600
+         Width           =   1125
+      End
+      Begin VB.Label Label2 
+         AutoSize        =   -1  'True
+         Caption         =   "Password Baru"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   6
+         Top             =   1080
+         Width           =   1065
+      End
+      Begin VB.Label Label3 
+         AutoSize        =   -1  'True
+         Caption         =   "Maksimal password 15 karakter"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   195
+         Left            =   120
+         TabIndex        =   5
+         Top             =   240
+         Width           =   2685
+      End
+   End
+   Begin VB.Image Image1 
+      Height          =   2415
+      Left            =   -240
+      Picture         =   "frmGPass.frx":0000
+      Stretch         =   -1  'True
+      Top             =   120
+      Width           =   2655
+   End
+   Begin VB.Shape Shape1 
+      BackStyle       =   1  'Opaque
+      BorderColor     =   &H00FFFFFF&
+      Height          =   3975
+      Left            =   -120
+      Shape           =   4  'Rounded Rectangle
+      Top             =   -360
+      Width           =   2655
+   End
+End
+Attribute VB_Name = "frmGPass"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False

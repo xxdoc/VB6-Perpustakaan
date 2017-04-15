@@ -1,0 +1,241 @@
+VERSION 5.00
+Begin VB.Form frmGPass 
+   BorderStyle     =   3  'Fixed Dialog
+   Caption         =   "-- Form Ganti Password --"
+   ClientHeight    =   3270
+   ClientLeft      =   45
+   ClientTop       =   435
+   ClientWidth     =   7050
+   LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MDIChild        =   -1  'True
+   MinButton       =   0   'False
+   ScaleHeight     =   3270
+   ScaleWidth      =   7050
+   ShowInTaskbar   =   0   'False
+   Begin VB.Frame Frame1 
+      Height          =   3015
+      Left            =   2640
+      TabIndex        =   0
+      Top             =   120
+      Width           =   4335
+      Begin VB.TextBox txtPassVerify 
+         Height          =   375
+         IMEMode         =   3  'DISABLE
+         Left            =   1320
+         MaxLength       =   15
+         PasswordChar    =   "*"
+         TabIndex        =   8
+         Top             =   1920
+         Width           =   2775
+      End
+      Begin VB.TextBox txtPassLama 
+         Height          =   375
+         IMEMode         =   3  'DISABLE
+         Left            =   1320
+         MaxLength       =   15
+         PasswordChar    =   "*"
+         TabIndex        =   4
+         Top             =   600
+         Width           =   2775
+      End
+      Begin VB.TextBox txtPassBaru 
+         Height          =   375
+         IMEMode         =   3  'DISABLE
+         Left            =   1320
+         MaxLength       =   15
+         PasswordChar    =   "*"
+         TabIndex        =   3
+         Top             =   1080
+         Width           =   2775
+      End
+      Begin VB.CommandButton cmdGanti 
+         Caption         =   "&Ganti Pass"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   495
+         Left            =   2880
+         TabIndex        =   2
+         Top             =   2400
+         Width           =   1215
+      End
+      Begin VB.CommandButton cmdBatal 
+         Caption         =   "&Batal"
+         Height          =   495
+         Left            =   1320
+         TabIndex        =   1
+         Top             =   2400
+         Width           =   1215
+      End
+      Begin VB.Label Label5 
+         AutoSize        =   -1  'True
+         Caption         =   "Verifikasi Password anda"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   195
+         Left            =   120
+         TabIndex        =   10
+         Top             =   1560
+         Width           =   2145
+      End
+      Begin VB.Label Label4 
+         AutoSize        =   -1  'True
+         Caption         =   "Password Baru"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   9
+         Top             =   1920
+         Width           =   1065
+      End
+      Begin VB.Label Label1 
+         AutoSize        =   -1  'True
+         Caption         =   "Password Lama"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   7
+         Top             =   600
+         Width           =   1125
+      End
+      Begin VB.Label Label2 
+         AutoSize        =   -1  'True
+         Caption         =   "Password Baru"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   6
+         Top             =   1080
+         Width           =   1065
+      End
+      Begin VB.Label Label3 
+         AutoSize        =   -1  'True
+         Caption         =   "Maksimal password 15 karakter"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   195
+         Left            =   120
+         TabIndex        =   5
+         Top             =   240
+         Width           =   2685
+      End
+   End
+   Begin VB.Image Image1 
+      Height          =   2415
+      Left            =   -240
+      Picture         =   "frmGPass.frx":0000
+      Stretch         =   -1  'True
+      Top             =   120
+      Width           =   2655
+   End
+   Begin VB.Shape Shape1 
+      BackStyle       =   1  'Opaque
+      BorderColor     =   &H00FFFFFF&
+      Height          =   3975
+      Left            =   -120
+      Shape           =   4  'Rounded Rectangle
+      Top             =   -360
+      Width           =   2655
+   End
+End
+Attribute VB_Name = "frmGPass"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+'Form Ganti Password - Aplikasi Perpustakaan
+'copyright(c)2016
+' - Yudha Tri Putra
+' - Asti Aprilliyanti
+' - Bangun Subkhi Ismawanto
+' - Manan Sabili
+' - Dwi Hardianto Putra
+' - Fera Waningsih
+Private sudah_benar As Boolean
+Private Sub cek_password_lama()
+Call koneksi_db
+    
+    dt_staff.Open "select * from T_STAFF where KD_STAFF='" & kode_staff & "' and PASS='" & txtPassLama.Text & "'", koneksi
+    With dt_staff
+        If .BOF And .EOF Then
+            MsgBox "Password lama anda salah,ulangi lagi", vbExclamation, "Aplikasi Perpustakaan"
+            txtPassLama.Text = ""
+            txtPassLama.SetFocus
+            sudah_benar = False
+        Else
+            txtPassBaru.SetFocus
+            sudah_benar = True
+        End If
+    End With
+    dt_staff.Close
+End Sub
+
+Private Sub bersih()
+txtPassLama.Text = ""
+txtPassBaru.Text = ""
+txtPassVerify.Text = ""
+End Sub
+
+Private Sub cmdBatal_Click()
+Call bersih
+End Sub
+
+Private Sub cmdGanti_Click()
+Call cek_password_lama
+If sudah_benar = True Then
+    If txtPassBaru.Text = txtPassLama.Text Then
+        MsgBox "Paasword lama tidak boleh sama dengan Password baru,ulangi lagi", vbExclamation, "Aplikasi Perpustakaan"
+    ElseIf txtPassBaru.Text <> txtPassVerify.Text Then
+        MsgBox "Verifikasi Password Baru salah,ulangi lagi", vbExclamation, "Aplikasi Perpustakaan"
+        txtPassVerify.Text = ""
+        txtPassVerify.SetFocus
+    Else
+        update = "update T_STAFF set PASS='" & txtPassBaru.Text & "' where KD_STAFF='" & kode_staff & "'"
+    
+        koneksi.Execute (update)
+        MsgBox "Password berhasil diganti", vbInformation, "Aplikasi Perpustakaan"
+    End If
+End If
+End Sub
+
+Private Sub Form_Load()
+Call bersih
+End Sub
+
+Private Sub txtPassBaru_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+    txtPassVerify.SetFocus
+End If
+End Sub
+
+Private Sub txtPassLama_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+    Call cek_password_lama
+End If
+End Sub
+
+Private Sub txtPassVerify_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+    cmdGanti.SetFocus
+End If
+End Sub

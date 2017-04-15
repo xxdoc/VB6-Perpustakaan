@@ -1,0 +1,133 @@
+VERSION 5.00
+Begin VB.Form frmLogin 
+   BorderStyle     =   3  'Fixed Dialog
+   Caption         =   "-- Form Login --"
+   ClientHeight    =   3045
+   ClientLeft      =   45
+   ClientTop       =   435
+   ClientWidth     =   8655
+   LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
+   ScaleHeight     =   3045
+   ScaleWidth      =   8655
+   ShowInTaskbar   =   0   'False
+   StartUpPosition =   3  'Windows Default
+   Begin VB.Frame Frame1 
+      Height          =   2295
+      Left            =   3120
+      TabIndex        =   0
+      Top             =   0
+      Width           =   5175
+      Begin VB.CommandButton cmdBatal 
+         Caption         =   "&Batal"
+         Height          =   495
+         Left            =   1200
+         TabIndex        =   4
+         Top             =   1560
+         Width           =   1215
+      End
+      Begin VB.CommandButton cmdLogin 
+         Caption         =   "&Login >>"
+         Height          =   495
+         Left            =   2760
+         TabIndex        =   3
+         Top             =   1560
+         Width           =   1215
+      End
+      Begin VB.TextBox txtPass 
+         Height          =   375
+         IMEMode         =   3  'DISABLE
+         Left            =   1200
+         MaxLength       =   15
+         PasswordChar    =   "*"
+         TabIndex        =   2
+         Top             =   1080
+         Width           =   2775
+      End
+      Begin VB.TextBox txtUser 
+         Height          =   375
+         Left            =   1200
+         MaxLength       =   6
+         TabIndex        =   1
+         Top             =   600
+         Width           =   1215
+      End
+      Begin VB.Label Label3 
+         AutoSize        =   -1  'True
+         Caption         =   "Silahkan isi username dan password anda dengan benar"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   195
+         Left            =   120
+         TabIndex        =   7
+         Top             =   240
+         Width           =   4800
+      End
+      Begin VB.Label Label2 
+         AutoSize        =   -1  'True
+         Caption         =   "Password"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   6
+         Top             =   1080
+         Width           =   690
+      End
+      Begin VB.Label Label1 
+         AutoSize        =   -1  'True
+         Caption         =   "User Name"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   5
+         Top             =   600
+         Width           =   795
+      End
+   End
+   Begin VB.Label Label4 
+      Caption         =   "Copyright(c)2016 - Mahasiswa/i BSI Margonda Depok"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Left            =   3120
+      TabIndex        =   8
+      Top             =   2640
+      Width           =   5175
+   End
+   Begin VB.Image Image1 
+      Height          =   2415
+      Left            =   240
+      Picture         =   "frmLogin.frx":0000
+      Stretch         =   -1  'True
+      Top             =   360
+      Width           =   2655
+   End
+   Begin VB.Shape Shape1 
+      BackStyle       =   1  'Opaque
+      BorderColor     =   &H00FFFFFF&
+      Height          =   3975
+      Left            =   -120
+      Shape           =   4  'Rounded Rectangle
+      Top             =   -120
+      Width           =   3135
+   End
+End
+Attribute VB_Name = "frmLogin"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False

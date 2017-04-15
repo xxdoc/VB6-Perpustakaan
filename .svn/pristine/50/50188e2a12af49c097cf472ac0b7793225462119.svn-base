@@ -1,0 +1,299 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.1.10-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win32
+-- HeidiSQL Version:             9.3.0.4984
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Dumping database structure for db_perpus
+CREATE DATABASE IF NOT EXISTS `db_perpus` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `db_perpus`;
+
+
+-- Dumping structure for table db_perpus.t_anggota
+CREATE TABLE IF NOT EXISTS `t_anggota` (
+  `NO_ANGGOTA` varchar(9) NOT NULL,
+  `NM_ANGGOTA` varchar(25) DEFAULT NULL,
+  `TGL_DAFTAR` date DEFAULT NULL,
+  `TGL_LAHIR` date DEFAULT NULL,
+  `ALAMAT` varchar(64) DEFAULT NULL,
+  `NIM` varchar(8) DEFAULT NULL,
+  `KETERANGAN` varchar(64) DEFAULT NULL,
+  `STATUS` varchar(6415) DEFAULT NULL,
+  PRIMARY KEY (`NO_ANGGOTA`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_perpus.t_anggota: ~3 rows (approximately)
+/*!40000 ALTER TABLE `t_anggota` DISABLE KEYS */;
+INSERT INTO `t_anggota` (`NO_ANGGOTA`, `NM_ANGGOTA`, `TGL_DAFTAR`, `TGL_LAHIR`, `ALAMAT`, `NIM`, `KETERANGAN`, `STATUS`) VALUES
+	('1604AG100', 'YUDHA', '2016-04-19', '1992-05-07', 'JATIJAJAR DEPOK', '12142123', '-', 'AKTIF'),
+	('1604AG161', 'BANGUN', '2016-04-19', '1994-04-04', 'CINERE', '12142090', '-', 'AKTIF'),
+	('1604AG162', 'TRI', '2016-04-23', '1999-09-09', 'BOGOR', '12142122', '', 'AKTIF');
+/*!40000 ALTER TABLE `t_anggota` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_perpus.t_buku
+CREATE TABLE IF NOT EXISTS `t_buku` (
+  `KD_BUKU` varchar(6) NOT NULL,
+  `NM_BUKU` varchar(35) DEFAULT NULL,
+  `JNS_BUKU` varchar(15) DEFAULT NULL,
+  `PENGARANG` varchar(30) DEFAULT NULL,
+  `PENERBIT` varchar(30) DEFAULT NULL,
+  `THN_TERBIT` year(4) DEFAULT NULL,
+  `HARGA` int(11) DEFAULT NULL,
+  `KD_RAK` varchar(3) DEFAULT NULL,
+  `STOK` int(11) DEFAULT NULL,
+  `KETERANGAN` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`KD_BUKU`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_perpus.t_buku: ~5 rows (approximately)
+/*!40000 ALTER TABLE `t_buku` DISABLE KEYS */;
+INSERT INTO `t_buku` (`KD_BUKU`, `NM_BUKU`, `JNS_BUKU`, `PENGARANG`, `PENERBIT`, `THN_TERBIT`, `HARGA`, `KD_RAK`, `STOK`, `KETERANGAN`) VALUES
+	('KM1000', 'Membuat Web dengan PHP + MySQL', 'Komputer', 'Putra Maju', 'Elesmedia', '2016', 30000, 'R01', 11, 'Bonus CD'),
+	('KM1001', 'Database MySQL Untuk Pemula', 'Komputer', 'Budi aja', 'Elesmedia', '2016', 35000, 'R01', 10, 'Plus CD'),
+	('KM1003', 'Ubuntu 14 Untuk Pemula', 'Komputer', 'Budi aja', 'Elesmedia', '2016', 30000, 'R01', 11, 'Bonus CD'),
+	('NV1004', 'Hujan Rintik-Rintik', 'Novel', 'Lele niye', 'Elesmedia', '2015', 40000, 'R03', 10, ''),
+	('UM1002', 'Merakit Gunpla - Edisi Pertama', 'Umum', 'Meijin Kawaguchi', 'Sunrise', '2016', 45000, 'R02', 5, '');
+/*!40000 ALTER TABLE `t_buku` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_perpus.t_detil_pinjam
+CREATE TABLE IF NOT EXISTS `t_detil_pinjam` (
+  `ID_DETIL_PJ` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `NO_PINJAM` varchar(10) DEFAULT NULL,
+  `KD_BUKU` varchar(6) DEFAULT NULL,
+  `STATUS` varchar(15) DEFAULT NULL,
+  `KONDISI` varchar(10) DEFAULT NULL,
+  `DENDA` int(11) DEFAULT NULL,
+  `QTY` int(8) DEFAULT NULL,
+  `KETERANGAN` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID_DETIL_PJ`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_perpus.t_detil_pinjam: ~9 rows (approximately)
+/*!40000 ALTER TABLE `t_detil_pinjam` DISABLE KEYS */;
+INSERT INTO `t_detil_pinjam` (`ID_DETIL_PJ`, `NO_PINJAM`, `KD_BUKU`, `STATUS`, `KONDISI`, `DENDA`, `QTY`, `KETERANGAN`) VALUES
+	(0000000001, '1604PJ1000', 'KM1000', 'KEMBALI', 'BAIK', 0, 1, NULL),
+	(0000000002, '1604PJ1000', 'KM1001', 'KEMBALI', 'RUSAK', 10500, 1, NULL),
+	(0000000003, '1604PJ1001', 'KM1001', 'KEMBALI', 'BAIK', 0, 1, NULL),
+	(0000000004, '1604PJ1002', 'KM1001', 'KEMBALI', 'BAIK', 0, 1, NULL),
+	(0000000005, '1604PJ1003', 'UM1002', 'KEMBALI', '', 0, 1, NULL),
+	(0000000006, '1604PJ1004', 'UM1002', '-', '-', 0, 1, NULL),
+	(0000000007, '1604PJ1004', 'KM1000', '-', '-', 0, 1, NULL),
+	(0000000008, '1604PJ1005', 'KM1003', 'KEMBALI', 'RUSAK', 9000, 1, NULL),
+	(0000000009, '1604PJ1005', 'NV1004', 'KEMBALI', '', 0, 1, NULL);
+/*!40000 ALTER TABLE `t_detil_pinjam` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_perpus.t_peminjaman
+CREATE TABLE IF NOT EXISTS `t_peminjaman` (
+  `NO_PINJAM` varchar(10) NOT NULL,
+  `KD_STAFF` varchar(6) DEFAULT NULL,
+  `NO_ANGGOTA` varchar(9) DEFAULT NULL,
+  `TGL_PINJAM` date DEFAULT NULL,
+  `TGL_KEMBALI` date DEFAULT NULL,
+  `TOTAL_DENDA` int(11) DEFAULT NULL,
+  `UPDATE_BY` varchar(6) DEFAULT NULL,
+  PRIMARY KEY (`NO_PINJAM`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_perpus.t_peminjaman: ~6 rows (approximately)
+/*!40000 ALTER TABLE `t_peminjaman` DISABLE KEYS */;
+INSERT INTO `t_peminjaman` (`NO_PINJAM`, `KD_STAFF`, `NO_ANGGOTA`, `TGL_PINJAM`, `TGL_KEMBALI`, `TOTAL_DENDA`, `UPDATE_BY`) VALUES
+	('1604PJ1000', 'BRB', '1604AG100', '2016-04-19', '2016-04-21', 10500, 'BRB'),
+	('1604PJ1001', 'BRB', '1604AG161', '2016-04-19', '2016-04-28', 0, 'ADM'),
+	('1604PJ1002', 'BRB', '1604AG100', '2016-04-21', '2016-04-21', 0, 'BRB'),
+	('1604PJ1003', 'ADM', '1604AG100', '2016-04-27', '2016-04-28', 0, 'ADM'),
+	('1604PJ1004', 'ADM', '1604AG100', '2016-04-28', '2016-04-28', 0, 'ADM'),
+	('1604PJ1005', 'ADM', '1604ag162', '2016-04-20', '2016-04-28', 13000, 'ADM');
+/*!40000 ALTER TABLE `t_peminjaman` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_perpus.t_settings
+CREATE TABLE IF NOT EXISTS `t_settings` (
+  `ID_SETTING` int(8) NOT NULL,
+  `NAMA_SETTING` varchar(20) NOT NULL,
+  `NILAI` varchar(10) NOT NULL,
+  `KETERANGAN` varchar(64) NOT NULL,
+  PRIMARY KEY (`ID_SETTING`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_perpus.t_settings: ~4 rows (approximately)
+/*!40000 ALTER TABLE `t_settings` DISABLE KEYS */;
+INSERT INTO `t_settings` (`ID_SETTING`, `NAMA_SETTING`, `NILAI`, `KETERANGAN`) VALUES
+	(1, 'KESEMPATAN_LOGIN', '3', 'JUMLAH MAKSIMAL KESEMPATAN LOGIN'),
+	(2, 'LAMA_PINJAM', '4', 'MAKSIMAL HARI UNTUK MEMINJAM BUKU'),
+	(3, 'MAX_BUKU', '10', 'BANYAKNYA BUKU YANG BISA DIPINJAM'),
+	(4, 'DENDA_PERHARI', '1000', 'DENDA TERLAMBAT PERHARI'),
+	(5, 'PERSEN_DENDA', '30', 'BIAYA DENDA JIKA BUKU RUSAK');
+/*!40000 ALTER TABLE `t_settings` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_perpus.t_staff
+CREATE TABLE IF NOT EXISTS `t_staff` (
+  `KD_STAFF` varchar(6) NOT NULL,
+  `NM_STAFF` varchar(25) DEFAULT NULL,
+  `PASS` varchar(15) DEFAULT NULL,
+  `ALAMAT` varchar(64) DEFAULT NULL,
+  `STATUS` varchar(5) DEFAULT NULL,
+  `LOCKED` varchar(5) DEFAULT NULL,
+  `LAST_LOGIN` datetime DEFAULT NULL,
+  PRIMARY KEY (`KD_STAFF`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_perpus.t_staff: ~3 rows (approximately)
+/*!40000 ALTER TABLE `t_staff` DISABLE KEYS */;
+INSERT INTO `t_staff` (`KD_STAFF`, `NM_STAFF`, `PASS`, `ALAMAT`, `STATUS`, `LOCKED`, `LAST_LOGIN`) VALUES
+	('ADM', 'ADMIN', '1234', 'DEPOK', 'ADMIN', 'FALSE', '2016-04-28 18:07:00'),
+	('BRB', 'BARBATOS', 'LUPA', 'DEPOK', 'USER', 'TRUE', '2016-04-27 15:28:00'),
+	('CBA', 'CATUR BARJA', 'APAYA', 'BOGOR', 'USER', 'FALSE', '2016-04-27 19:33:00');
+/*!40000 ALTER TABLE `t_staff` ENABLE KEYS */;
+
+
+-- Dumping structure for table db_perpus.t_temp
+CREATE TABLE IF NOT EXISTS `t_temp` (
+  `KD_BUKU` varchar(6) DEFAULT NULL,
+  `NM_BUKU` varchar(35) DEFAULT NULL,
+  `PENGARANG` varchar(30) DEFAULT NULL,
+  `THN` varchar(4) DEFAULT NULL,
+  `QTY` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_perpus.t_temp: ~2 rows (approximately)
+/*!40000 ALTER TABLE `t_temp` DISABLE KEYS */;
+INSERT INTO `t_temp` (`KD_BUKU`, `NM_BUKU`, `PENGARANG`, `THN`, `QTY`) VALUES
+	('KM1003', 'Ubuntu 14 Untuk Pemula', 'Budi aja', '2016', 1),
+	('NV1004', 'Hujan Rintik-Rintik', 'Lele niye', '2015', 1);
+/*!40000 ALTER TABLE `t_temp` ENABLE KEYS */;
+
+
+-- Dumping structure for view db_perpus.v_buku_favorit
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `v_buku_favorit` (
+	`KD_BUKU` VARCHAR(6) NOT NULL COLLATE 'latin1_swedish_ci',
+	`NM_BUKU` VARCHAR(35) NULL COLLATE 'latin1_swedish_ci',
+	`PENGARANG` VARCHAR(30) NULL COLLATE 'latin1_swedish_ci',
+	`PENERBIT` VARCHAR(30) NULL COLLATE 'latin1_swedish_ci',
+	`STOK` INT(11) NULL,
+	`DIPINJAM` BIGINT(21) NOT NULL
+) ENGINE=MyISAM;
+
+
+-- Dumping structure for view db_perpus.v_detil_pinjam
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `v_detil_pinjam` (
+	`NO_PINJAM` VARCHAR(10) NOT NULL COLLATE 'latin1_swedish_ci',
+	`KD_BUKU` VARCHAR(6) NOT NULL COLLATE 'latin1_swedish_ci',
+	`NM_BUKU` VARCHAR(35) NULL COLLATE 'latin1_swedish_ci',
+	`PENGARANG` VARCHAR(30) NULL COLLATE 'latin1_swedish_ci',
+	`HARGA` INT(11) NULL,
+	`STATUS` VARCHAR(15) NULL COLLATE 'latin1_swedish_ci',
+	`KONDISI` VARCHAR(10) NULL COLLATE 'latin1_swedish_ci',
+	`DENDA` INT(11) NULL,
+	`QTY` INT(8) NULL
+) ENGINE=MyISAM;
+
+
+-- Dumping structure for view db_perpus.v_history
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `v_history` (
+	`NO_PINJAM` VARCHAR(10) NOT NULL COLLATE 'latin1_swedish_ci',
+	`NO_ANGGOTA` VARCHAR(9) NOT NULL COLLATE 'latin1_swedish_ci',
+	`NM_ANGGOTA` VARCHAR(25) NULL COLLATE 'latin1_swedish_ci',
+	`TGL_PINJAM` DATE NULL,
+	`TGL_KEMBALI` DATE NULL,
+	`TOTAL_DENDA` INT(11) NULL
+) ENGINE=MyISAM;
+
+
+-- Dumping structure for view db_perpus.v_peminjaman
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `v_peminjaman` (
+	`NO_PINJAM` VARCHAR(10) NOT NULL COLLATE 'latin1_swedish_ci',
+	`NM_STAFF` VARCHAR(25) NULL COLLATE 'latin1_swedish_ci',
+	`NO_ANGGOTA` VARCHAR(9) NOT NULL COLLATE 'latin1_swedish_ci',
+	`NM_ANGGOTA` VARCHAR(25) NULL COLLATE 'latin1_swedish_ci',
+	`TGL_PINJAM` DATE NULL,
+	`TGL_KEMBALI` DATE NULL,
+	`TOTAL_DENDA` INT(11) NULL,
+	`UPDATE_BY` VARCHAR(6) NULL COLLATE 'latin1_swedish_ci'
+) ENGINE=MyISAM;
+
+
+-- Dumping structure for view db_perpus.v_buku_favorit
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `v_buku_favorit`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `v_buku_favorit` AS SELECT C.KD_BUKU,
+C.NM_BUKU,
+C.PENGARANG,
+C.PENERBIT,
+C.STOK,
+COUNT(B.QTY) AS DIPINJAM
+FROM T_PEMINJAMAN A
+JOIN T_DETIL_PINJAM B
+ON A.NO_PINJAM = B.NO_PINJAM
+JOIN T_BUKU C
+ON B.KD_BUKU = C.KD_BUKU 
+GROUP BY C.KD_BUKU 
+ORDER BY DIPINJAM DESC
+LIMIT 10 ;
+
+
+-- Dumping structure for view db_perpus.v_detil_pinjam
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `v_detil_pinjam`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `v_detil_pinjam` AS SELECT A.NO_PINJAM,
+C.KD_BUKU,
+C.NM_BUKU,
+C.PENGARANG,
+C.HARGA,
+B.STATUS,
+B.KONDISI,
+B.DENDA,
+B.QTY
+FROM T_PEMINJAMAN A
+JOIN T_DETIL_PINJAM B
+ON A.NO_PINJAM = B.NO_PINJAM
+JOIN T_BUKU C
+ON B.KD_BUKU = C.KD_BUKU ;
+
+
+-- Dumping structure for view db_perpus.v_history
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `v_history`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `v_history` AS SELECT A.NO_PINJAM,
+B.NO_ANGGOTA,
+B.NM_ANGGOTA,
+A.TGL_PINJAM,
+A.TGL_KEMBALI,
+A.TOTAL_DENDA
+FROM T_PEMINJAMAN A
+JOIN T_ANGGOTA B
+ON A.NO_ANGGOTA = B.NO_ANGGOTA ;
+
+
+-- Dumping structure for view db_perpus.v_peminjaman
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `v_peminjaman`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `v_peminjaman` AS SELECT A.NO_PINJAM,
+C.NM_STAFF,
+B.NO_ANGGOTA,
+B.NM_ANGGOTA,
+A.TGL_PINJAM,
+A.TGL_KEMBALI,
+A.TOTAL_DENDA,
+A.UPDATE_BY
+FROM T_PEMINJAMAN A
+JOIN T_ANGGOTA B
+ON A.NO_ANGGOTA = B.NO_ANGGOTA
+JOIN T_STAFF C
+ON A.KD_STAFF = C.KD_STAFF ;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

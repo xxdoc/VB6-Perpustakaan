@@ -1,0 +1,24 @@
+VERSION 5.00
+Begin VB.Form frmPeminjaman 
+   Caption         =   "-- Form Peminjaman Buku --"
+   ClientHeight    =   6930
+   ClientLeft      =   60
+   ClientTop       =   450
+   ClientWidth     =   11265
+   LinkTopic       =   "Form1"
+   MDIChild        =   -1  'True
+   ScaleHeight     =   6930
+   ScaleWidth      =   11265
+   Begin VB.Frame Frame1 
+      Height          =   2175
+      Left            =   120
+      TabIndex        =   0
+      Top             =   120
+      Width           =   7095
+   End
+End
+Attribute VB_Name = "frmPeminjaman"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False

@@ -1,0 +1,113 @@
+VERSION 5.00
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "Mscomctl.ocx"
+Begin VB.MDIForm frmMaster 
+   BackColor       =   &H8000000C&
+   Caption         =   "-- Aplikasi Perpustakaan v1.0 --"
+   ClientHeight    =   3090
+   ClientLeft      =   165
+   ClientTop       =   855
+   ClientWidth     =   4680
+   LinkTopic       =   "MDIForm1"
+   StartUpPosition =   3  'Windows Default
+   WindowState     =   2  'Maximized
+   Begin MSComctlLib.StatusBar sbar 
+      Align           =   2  'Align Bottom
+      Height          =   375
+      Left            =   0
+      TabIndex        =   0
+      Top             =   2715
+      Width           =   4680
+      _ExtentX        =   8255
+      _ExtentY        =   661
+      _Version        =   393216
+      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
+         NumPanels       =   2
+         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            Text            =   "user"
+            TextSave        =   "user"
+         EndProperty
+         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            Text            =   "tanggal"
+            TextSave        =   "tanggal"
+         EndProperty
+      EndProperty
+   End
+   Begin VB.Menu mn_file 
+      Caption         =   "&File"
+      Begin VB.Menu mn_login 
+         Caption         =   "Login"
+      End
+      Begin VB.Menu mn_pisah_1 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mn_gpass 
+         Caption         =   "Ganti Password"
+      End
+      Begin VB.Menu mn_logout 
+         Caption         =   "Logout"
+      End
+      Begin VB.Menu mn_keluar 
+         Caption         =   "Keluar"
+      End
+   End
+   Begin VB.Menu mn_data 
+      Caption         =   "Data"
+      Begin VB.Menu mn_data_buku 
+         Caption         =   "Data Buku"
+      End
+      Begin VB.Menu mn_data_staff 
+         Caption         =   "Data Staff"
+      End
+   End
+   Begin VB.Menu mn_transaksi 
+      Caption         =   "Transaksi"
+      Begin VB.Menu mn_peminjaman 
+         Caption         =   "Form Peminjaman"
+      End
+      Begin VB.Menu mn_pengembalian 
+         Caption         =   "Form Pengembalian"
+      End
+   End
+   Begin VB.Menu mn_laporan 
+      Caption         =   "Laporan"
+      Begin VB.Menu mn_lap_pinjam 
+         Caption         =   "Laporan Peminjaman"
+      End
+      Begin VB.Menu mn_lap_kembali 
+         Caption         =   "Laporan Pengembalian"
+      End
+      Begin VB.Menu mn_pisah_2 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mn_lap_data_buku 
+         Caption         =   "Laporan Data Buku"
+      End
+      Begin VB.Menu mn_lap_buku_fav 
+         Caption         =   "Laporan Buku Favorit"
+      End
+   End
+   Begin VB.Menu mn_setting 
+      Caption         =   "Setting"
+   End
+   Begin VB.Menu mn_tentang 
+      Caption         =   "Tentang"
+   End
+End
+Attribute VB_Name = "frmMaster"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Private Sub MDIForm_Load()
+frmLogin.Show
+sbar.Panels(1).Text = nama_staff
+sbar.Panels(2).Text = Time()
+End Sub
+
+Private Sub mn_data_buku_Click()
+frmBuku.Show
+End Sub
+
+Private Sub mn_login_Click()
+frmLogin.Show
+End Sub
